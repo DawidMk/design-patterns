@@ -6,4 +6,8 @@ public class Passat extends Car {
     public Passat(int door, String color, Year productionYear) {
         super(door, color, productionYear);
     }
+
+    public Passat() {
+        super();
+    }
 }

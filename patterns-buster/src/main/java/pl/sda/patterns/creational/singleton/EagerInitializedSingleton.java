@@ -1,6 +1,5 @@
 package pl.sda.patterns.creational.singleton;
 
-//TODO FIX BUGS
 public class EagerInitializedSingleton {
 
     private static final PropertyLoader instance = new PropertyLoader();
@@ -10,6 +9,7 @@ public class EagerInitializedSingleton {
     }
 
     public static PropertyLoader getInstance() {
+        instance.init();
         return instance;
     }
 }

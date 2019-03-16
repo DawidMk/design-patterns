@@ -83,7 +83,7 @@ The main object of this workshops is to reach a DoD for every pattern implementa
     b) Using Apache Commons CSV
     c) Using OpenCSV
 
-* Factory
+* Factory§
 3. Take a look in the TheBestCarmaker and try to implement all todos
 
 * Abstract Factory

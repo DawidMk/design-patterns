@@ -6,4 +6,8 @@ public class Civic extends Car {
     public Civic(int door, String color, Year productionYear) {
         super(door, color, productionYear);
     }
+
+    public Civic() {
+        super();
+    }
 }

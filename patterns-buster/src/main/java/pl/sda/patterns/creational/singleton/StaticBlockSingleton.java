@@ -3,21 +3,13 @@ package pl.sda.patterns.creational.singleton;
 //TODO fix bugs
 public class StaticBlockSingleton {
 
-    private static PropertyLoader instance;
+    private static PropertyLoader instance = new PropertyLoader();
 
     private StaticBlockSingleton() {
     }
 
-    //static block initialization for exception handling
-    static {
-        try {
-            PropertyLoader instance = new PropertyLoader();
-        } catch (Exception e) {
-            throw new RuntimeException("Exception occurred in creating singleton instance");
-        }
-    }
-
     public static PropertyLoader getInstance() {
+        instance.init();
         return instance;
     }
 }

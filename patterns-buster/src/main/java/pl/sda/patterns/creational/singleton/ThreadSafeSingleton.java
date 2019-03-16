@@ -9,6 +9,7 @@ public class ThreadSafeSingleton {
     public synchronized static PropertyLoader getInstance() {
         if (instance == null) {
             instance = new PropertyLoader();
+            instance.init();
         }
         return instance;
     }

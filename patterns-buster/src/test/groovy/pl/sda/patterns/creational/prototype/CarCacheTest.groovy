@@ -28,13 +28,11 @@ class CarCacheTest extends Specification {
 
     def "Should return correct size of cache"() {
         given:
-        CarCache cache = new CarCache()
+            CarCache cache = new CarCache()
 
         when:
-        def size = cache.getSize()
-
+            def size = cache.getSize()
         then:
-        size == 3
-
+            size == 3
     }
 }
