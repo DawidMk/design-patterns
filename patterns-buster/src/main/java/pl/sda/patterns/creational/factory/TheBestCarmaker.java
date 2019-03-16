@@ -1,5 +1,6 @@
 package pl.sda.patterns.creational.factory;
 
+import com.google.common.collect.ImmutableMap;
 import pl.sda.model.Calibra;
 import pl.sda.model.Car;
 import pl.sda.model.CarType;
@@ -25,6 +26,13 @@ public class TheBestCarmaker {
             CALIBRA, new Calibra(),
             PASSAT, new Passat(),
             CIVIC, new Civic()
+    );
+
+    //TODO refleksja
+    Map<CarType, Object> carMap2 = ImmutableMap.of(
+            CALIBRA, Calibra.class,
+            PASSAT, Passat.class,
+            CIVIC, Civic.class
     );
 
     public Calibra makeCalibra(int door, String color, Year productionYear) {
@@ -67,7 +75,7 @@ public class TheBestCarmaker {
         return carMap.get(carType);
     }
 
-    public Car makeCar4(CarType car, int door, String color, Year productionYear){
+    public Car makeCar4(CarType car, int door, String color, Year productionYear) {
         Car emptyCar = makeCar3(car);
         emptyCar.setColor(color);
         emptyCar.setDoor(door);
