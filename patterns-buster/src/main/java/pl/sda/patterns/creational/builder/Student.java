@@ -17,6 +17,10 @@ public class Student {
     private DayOfWeek birthDayOfWeek;
     private Boolean scholarship;
 
+    //TODO remove
+    public Student(String firstName) {
+    }
+
     public Student(String firstName,
                    String lastName,
                    String pesel,
@@ -31,5 +35,18 @@ public class Student {
         this.birthMonth = birthMonth;
         this.birthDayOfWeek = birthDayOfWeek;
         this.scholarship = scholarship;
+    }
+
+    public static class Builder {
+        private String firstName;
+
+        public Builder withFirstName(String name) {
+            this.firstName = name;
+            return this;
+        }
+
+        public Student build() {
+            return new Student(firstName);
+        }
     }
 }

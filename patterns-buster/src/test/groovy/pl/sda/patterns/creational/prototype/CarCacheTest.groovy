@@ -13,16 +13,16 @@ class CarCacheTest extends Specification {
     @PendingFeature
     def "Should return #car for #type"() {
         given:
-        CarCache cache = new CarCache()
+            CarCache cache = new CarCache()
 
         expect:
-        car == cache.getCar(type)
+            car == cache.getCar(type)
 
         where:
-        car                                || type
-        new Calibra(2, "pink", Year.now()) || "Calibra"
-        new Civic(2, "pink", Year.now())   || "Civic"
-        new Passat(2, "pink", Year.now())  || "Passat"
+            car                                || type
+            new Calibra(2, "pink", Year.now()) || "Calibra"
+            new Civic(2, "pink", Year.now())   || "Civic"
+            new Passat(2, "pink", Year.now())  || "Passat"
 
     }
 

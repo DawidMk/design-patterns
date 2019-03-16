@@ -4,9 +4,7 @@ import static pl.sda.patterns.creational.factory.abstractfactory.DataType.*;
 
 public class FactoryProvider {
 
-    public AbstractFactory getFactory(DataType dataType,
-                                      String content,
-                                      String path) {
+    public AbstractFactory getFactory(DataType dataType) {
         if (CSV == dataType) {
             return new CsvFactory();
         } else if (PDF == dataType) {
@@ -22,7 +20,7 @@ public class FactoryProvider {
     public void saveData(DataType dataType,
                          String content,
                          String path) {
-        AbstractFactory factory = getFactory(dataType, content, path);
+        AbstractFactory factory = getFactory(dataType);
         factory.save(content, path);
     }
 
