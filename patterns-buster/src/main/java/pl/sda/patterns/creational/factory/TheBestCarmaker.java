@@ -1,18 +1,17 @@
 package pl.sda.patterns.creational.factory;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.errorprone.annotations.Immutable;
-import org.checkerframework.checker.units.qual.C;
 import pl.sda.model.Calibra;
 import pl.sda.model.Car;
+import pl.sda.model.CarType;
 import pl.sda.model.Civic;
 import pl.sda.model.Passat;
-import pl.sda.patterns.creational.factory.factory.CarModel;
 
 import java.time.Year;
 import java.util.Map;
 
-import static pl.sda.patterns.creational.factory.factory.CarModel.*;
+import static com.google.common.collect.ImmutableMap.of;
+import static pl.sda.model.CarType.*;
 
 //TODO 1. Refactor to use factory here
 //TODO 2. Use polymorphism
@@ -23,12 +22,20 @@ import static pl.sda.patterns.creational.factory.factory.CarModel.*;
 //TODO 4. For all implementations please add junit tests.
 public class TheBestCarmaker {
 
-    Map<CarModel, Car> carMap = ImmutableMap.of(
+    Map<CarType, Car> carMap = of(
             CALIBRA, new Calibra(),
             PASSAT, new Passat(),
-            CIVIC, new Civic());
+            CIVIC, new Civic()
+    );
 
-  /*  public Calibra makeCalibra(int door, String color, Year productionYear) {
+    //TODO refleksja
+    Map<CarType, Object> carMap2 = ImmutableMap.of(
+            CALIBRA, Calibra.class,
+            PASSAT, Passat.class,
+            CIVIC, Civic.class
+    );
+
+    public Calibra makeCalibra(int door, String color, Year productionYear) {
         return new Calibra(door, color, productionYear);
     }
 
@@ -38,30 +45,42 @@ public class TheBestCarmaker {
 
     public Passat makePassat(int door, String color, Year productionYear) {
         return new Passat(door, color, productionYear);
-    }*/
+    }
 
-    public Car makeCar(int door, String color, Year productionYear, String model) {
-        if (model.equals(Civic.class.getSimpleName())) {
-            return new Civic(door, color, productionYear);
-        } else if (model.equals(Calibra.class.getSimpleName())) {
+    public Car makeCar(String car, int door, String color, Year productionYear) {
+        if (car.equals(Calibra.class.getSimpleName())) {
             return new Calibra(door, color, productionYear);
-        } else if (model.equals(Passat.class.getSimpleName())) {
+        } else if (car.equals(Passat.class.getSimpleName())) {
             return new Passat(door, color, productionYear);
+        } else if (car.equals(Civic.class.getSimpleName())) {
+            return new Civic(door, color, productionYear);
         } else {
-            throw new RuntimeException("fail");
+            throw new RuntimeException("Nieprawidłowy model");
         }
     }
 
-    public Car makeCarMap(CarModel carModel) {
-        return carMap.get(carModel);
+    public Car makeCar2(CarType car, int door, String color, Year productionYear) {
+        if (CALIBRA == car) {
+            return new Calibra(door, color, productionYear);
+        } else if (PASSAT == car) {
+            return new Passat(door, color, productionYear);
+        } else if (CIVIC == car) {
+            return new Civic(door, color, productionYear);
+        } else {
+            throw new RuntimeException("Nieprawidłowy model");
+        }
     }
 
-    //todo
-    public Car makeCar4(CarModel carModel, int door, String color, Year productionYear) {
-        Car emptyCar = makeCarMap(carModel);
+    public Car makeCar3(CarType carType) {
+        return carMap.get(carType);
+    }
+
+    public Car makeCar4(CarType car, int door, String color, Year productionYear) {
+        Car emptyCar = makeCar3(car);
         emptyCar.setColor(color);
         emptyCar.setDoor(door);
         emptyCar.setProductionYear(productionYear);
         return emptyCar;
     }
+
 }

@@ -10,24 +10,12 @@ public abstract class Car implements Driveable, Cloneable {
     private String color;
     private Year productionYear;
 
+    protected Car() {
+    }
+
     public Car(int door, String color, Year productionYear) {
         this.door = door;
         this.color = color;
-        this.productionYear = productionYear;
-    }
-
-    public Car() {
-    }
-
-    public void setDoor(int door) {
-        this.door = door;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public void setProductionYear(Year productionYear) {
         this.productionYear = productionYear;
     }
 
@@ -43,6 +31,17 @@ public abstract class Car implements Driveable, Cloneable {
         return productionYear;
     }
 
+    public void setDoor(int door) {
+        this.door = door;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setProductionYear(Year productionYear) {
+        this.productionYear = productionYear;
+    }
 
     //TODO note that using .clone is not the best way to copy objects in Java
     //TODO we should think about just copying all existing values to the new object
@@ -55,6 +54,8 @@ public abstract class Car implements Driveable, Cloneable {
         }
         return null;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

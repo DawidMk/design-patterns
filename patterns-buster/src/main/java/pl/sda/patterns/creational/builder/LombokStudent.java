@@ -1,7 +1,7 @@
 package pl.sda.patterns.creational.builder;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Builder;
+import lombok.NonNull;
 
 import java.time.DayOfWeek;
 import java.time.Month;
@@ -10,13 +10,13 @@ import java.time.Year;
 @Builder
 public class LombokStudent {
     //Required Parameters
-    @NotNull
+    @NonNull
     private String firstName;
-    @NotNull
+    @NonNull
     private String lastName;
-    @NotNull
+    @NonNull
     private String pesel;
-    @NotNull
+    @NonNull
     private Year birthYear;
 
     //Optional Parameters

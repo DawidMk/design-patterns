@@ -1,26 +1,23 @@
 package pl.sda.patterns.creational.builder;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.time.Year;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class LombokStudentTest {
 
     @Test
     void builder() {
-        LombokStudent student = LombokStudent
+        LombokStudent build = LombokStudent
                 .builder()
-                .firstName("Janusz")
-                .lastName("Tracz")
-                .pesel("123")
-                .birthYear(Year.of(1999))
+                .firstName("")
+                .lastName("")
+                .pesel("")
+                .birthYear(Year.now())
                 .build();
 
-        Student.Builder build = new Student.Builder();
-        Student build1 = build
+        Student.Builder builder = new Student.Builder();
+        Student build1 = builder
                 .withFirstName("name")
                 .build();
     }

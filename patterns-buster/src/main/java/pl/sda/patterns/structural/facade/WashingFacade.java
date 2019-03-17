@@ -1,15 +1,26 @@
 package pl.sda.patterns.structural.facade;
 
-//TODO implement all steps necessary to do the laundry
 public class WashingFacade {
 
-    //TODO
-    public void start() {
+    private DryingRack dryingRack = new DryingRack();
+    private LaundryBasket basket = new LaundryBasket();
+    private WashingMachine machine = new WashingMachine();
 
+
+    public void start() {
+        basket.emptyOut();
+        machine.loadLaundry();
+        machine.chooseProgram();
+        machine.setTemperature(50);
+        machine.start();
     }
 
-    //TODO
+
     public void stop() {
+        machine.stop();
+        machine.extractLaundry();
+        dryingRack.removeOldLaundry();
+        dryingRack.hangLaundry();
 
     }
 }

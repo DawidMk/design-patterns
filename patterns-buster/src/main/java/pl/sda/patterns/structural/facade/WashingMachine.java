@@ -7,6 +7,10 @@ public class WashingMachine {
     }
 
     public void setTemperature(int degrees) {
+        if(degrees == 0){
+            throw new RuntimeException
+                    ("should not be 0");
+        }
 
     }
 
@@ -22,4 +26,6 @@ public class WashingMachine {
 
     }
 
+    public void extractLaundry() {
+    }
 }

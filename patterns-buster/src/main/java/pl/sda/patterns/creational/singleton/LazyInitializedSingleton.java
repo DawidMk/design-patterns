@@ -1,6 +1,5 @@
 package pl.sda.patterns.creational.singleton;
 
-//TODO fix bugs
 public class LazyInitializedSingleton {
     private static PropertyLoader instance;
 
@@ -8,12 +7,10 @@ public class LazyInitializedSingleton {
     }
 
     public static PropertyLoader getInstance() {
-        if (instance == null) {
+        if (instance == null){
             instance = new PropertyLoader();
             instance.init();
         }
-
-            return instance;
-
+        return instance;
     }
 }

@@ -21,5 +21,9 @@ class ShoppingCartTest {
         //TODO add items to shopping cart
         //TODO try to pay using different type of money
 
+        ShoppingCart cart = new ShoppingCart();
+        food.forEach(cart::addItem);
+//        cart.pay();
+
     }
 }

@@ -1,22 +1,31 @@
 package pl.sda.patterns.creational.factory.abstractfactory;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertThat;
 
 class FactoryProviderTest {
 
     @Test
-    void getFactoryTest(){
+    @DisplayName("Check if factory is instance of created factory")
+    void saveData() {
+        //given
         FactoryProvider factoryProvider = new FactoryProvider();
-        AbstractFactory abstractFactory =factoryProvider.getFactory(DataType.PDF, "aaa", "bbb");
-        Assert.assertThat(factoryProvider, CoreMatchers.instanceOf(PdfFactory.class));
-        Assert.assertTrue(abstractFactory instanceof PdfFactory);
 
-        Object input = abstractFactory.save("content", "aaa.pdf");
+        //when
+        AbstractFactory factory = factoryProvider.getFactory(DataType.PDF);
 
-        Assert.assertTrue(input instanceof PdfFactory);
+        //then
+        assertThat(factory, instanceOf(PdfFactory.class));
+        Assert.assertTrue(factory instanceof PdfFactory);
+
+        //when
+        Object input = factory.save("jakiskontent", "plik.pdf");
+
+        //then
+        Assert.assertTrue(input instanceof PdfHolder);
     }
 }

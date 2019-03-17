@@ -14,4 +14,8 @@ public abstract class Shape {
     protected void applyColor() {
         this.color.applyColor();
     }
+
+    public Color getColor() {
+        return this.color;
+    }
 }

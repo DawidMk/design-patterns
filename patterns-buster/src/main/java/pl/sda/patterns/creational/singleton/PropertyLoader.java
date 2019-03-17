@@ -4,28 +4,24 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-//TODO read connection.properties from the file
 class PropertyLoader {
 
     private Properties properties = new Properties();
 
     public void init() {
         if (properties.isEmpty()) {
-            InputStream stream = this.getClass().getClassLoader().getResourceAsStream("connection.properties");
-
-
+            InputStream stream = this
+                    .getClass().getClassLoader()
+                    .getResourceAsStream("connection.properties");
             try {
                 properties.load(stream);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
                 stream.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
     public String getDb() {
         return getProperty("db");
     }

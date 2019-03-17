@@ -5,18 +5,19 @@ public class SocketObjectAdapterImpl implements SocketAdapter {
 
     @Override
     public Volt get120Volt() {
-        return null;
+        return sock.getVolt();
     }
 
     @Override
     public Volt get12Volt() {
-        return null;
+        return new Volt(sock.getVolt().getVolts()/10);
 
     }
 
     @Override
     public Volt get3Volt() {
-        return null;
+        return new Volt(sock.getVolt().getVolts()/40);
+
 
     }
 

@@ -17,7 +17,8 @@ public class Student {
     private DayOfWeek birthDayOfWeek;
     private Boolean scholarship;
 
-    public Student() {
+    //TODO remove
+    public Student(String firstName) {
     }
 
     public Student(String firstName,
@@ -34,10 +35,6 @@ public class Student {
         this.birthMonth = birthMonth;
         this.birthDayOfWeek = birthDayOfWeek;
         this.scholarship = scholarship;
-    }
-
-    public Student(String firstName) {
-
     }
 
     public static class Builder {

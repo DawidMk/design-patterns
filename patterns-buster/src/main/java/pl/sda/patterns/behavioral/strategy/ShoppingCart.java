@@ -21,4 +21,6 @@ public class ShoppingCart {
     public void removeItem(Item item) {
         this.removeItem(item);
     }
+public void pay(PaymentMethod p){};
+
 }
